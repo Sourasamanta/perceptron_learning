@@ -1,0 +1,8 @@
+services:
+  android_builder:
+    image: sourajit2004/perceptron_learning:latest
+    container_name: android_compose_build
+    working_dir: /app
+    volumes:
+      - ../../../../../../..:/app
+    command: ./gradlew assembleDebug
