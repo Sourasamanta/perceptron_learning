@@ -3,9 +3,9 @@ It is a perceptron learning simulation made in Kotlin
 
 ---
 
-# 🔍 Perceptron Learning in Java
+# 🔍 Perceptron Learning in Java and kotlin
 
-A simple **Perceptron implementation** in Java for binary classification problems. This project demonstrates the fundamental building blocks of a single-layer neural network, including weight updates, bias adjustment, and iterative training.
+A simple **Perceptron implementation** in Java and kotlin for binary classification problems. This project demonstrates the fundamental building blocks of a single-layer neural network, including weight updates, bias adjustment, and iterative training.
 
 ---
 
