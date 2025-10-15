@@ -1,8 +1,6 @@
 # perceptron_learning
 It is a perceptron learning simulation made in Kotlin
 
-Here’s a polished README for your Perceptron project, modeled on the style of the LL(1) parser README you shared:
-
 ---
 
 # 🔍 Perceptron Learning in Java
