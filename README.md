@@ -1,101 +1,196 @@
-# perceptron_learning
-It is a perceptron learning simulation made in Kotlin
+# Perceptron Learning Simulator — Android (Kotlin | Jetpack Compose)
+
+A **modern Android app** demonstrating a **single-layer Perceptron** for binary classification. Built with **Kotlin** and **Jetpack Compose**, it emphasizes **state-driven UI**, **clean separation of logic**, and **interactive experimentation** with weights, bias, and learning rates.
 
 ---
 
-# 🔍 Perceptron Learning in Java and kotlin
+## 🚀 Overview
 
-A simple **Perceptron implementation** in Java and kotlin for binary classification problems. This project demonstrates the fundamental building blocks of a single-layer neural network, including weight updates, bias adjustment, and iterative training.
+This project is designed to showcase **Android engineering skills** relevant for internship and junior roles:
 
----
+- **Declarative UI** with Jetpack Compose (Material 3)  
+- **State-driven rendering** using `remember` and `mutableStateOf`  
+- **Separation of UI and business logic** (Perceptron model in pure Kotlin)  
+- **Interactive training and prediction** for AND/OR logic  
+- **Live visualization** of weights and bias updates  
 
-## 🚀 Features
-
-✅ Supports arbitrary input size
-✅ Binary classification using -1/1 convention
-✅ Adjustable learning rate
-✅ Predict function for inference
-✅ Train function with iterative weight updates until convergence
-✅ Access to learned weights and bias after training
+The app is **educational, interactive, and production-inspired**, demonstrating how ML logic can integrate cleanly into Android apps.
 
 ---
 
-## 📂 Project Structure
+## 🔹 Problem Solved
 
+Traditional Perceptron simulations are often:
+
+- Console-based or static  
+- Hard to experiment with parameters  
+- Coupled between UI and logic  
+
+This app fixes those issues by:
+
+- Providing **real-time training UI**  
+- Allowing **adjustable learning rate and iterations**  
+- Displaying **live weight/bias updates**  
+- Ensuring **safe numeric input handling**  
+
+---
+
+## ⚡ Key Features
+
+- Supports **arbitrary input size**  
+- **Binary classification** with -1/1 convention  
+- **Train function** with iterative weight updates  
+- **Predict function** for inference  
+- Adjustable **learning rate** and **training iterations**  
+- **Live display** of learned weights and bias  
+- Material 3 UI with **modern top bar, cards, and interactive layouts**  
+- **Safe input handling** to prevent crashes  
+
+---
+
+## 💡 Perceptron Logic
+
+The perceptron follows the standard learning model:
+
+```text
+output = sign(sum(weight_i * input_i) + bias)
+weight_i = weight_i + learning_rate * (target - output) * input_i
+bias = bias + learning_rate * (target - output)
 ```
-├── Perceptron.java       # Core perceptron implementation
-├── Main.java             # Sample usage / test cases
-├── README.md             # Documentation (this file)
-```
+
+✅ Predictable, testable, and fully isolated from UI  
+✅ Easy to extend to multi-layer perceptrons in the future  
 
 ---
 
-## 🛠️ How to Compile and Run
+## 🛠️ Android-Specific Highlights
 
-### 🧱 Compile
+- **Compose State Management**
+  - `remember` + `mutableStateOf` for dynamic UI  
+  - Stateless composables wherever possible  
 
+- **Input Safety**
+  - Sanitized numeric input before model updates  
+  - Prevents crashes or inconsistent predictions  
+
+- **UI & Architecture**
+  - Clean separation between **UI** (Compose) and **business logic** (Perceptron model)  
+  - Allows easy swapping of ML models or training logic  
+
+- **Material 3 Theming**
+  - Consistent colors, elevation, typography  
+  - Card-based display for weights, bias, and predictions  
+
+---
+
+## 🧪 Test Cases / Examples
+
+### AND Logic
+**Input:** `[[0,0],[0,1],[1,0],[1,1]]`  
+**Target:** `[-1,-1,-1,1]`  
+**Outcome:** Correct predictions after training  
+
+### OR Logic
+**Input:** `[[0,0],[0,1],[1,0],[1,1]]`  
+**Target:** `[-1,1,1,1]`  
+**Outcome:** Correct predictions after training  
+
+### Dynamic Learning Rate
+- Adjust learning rate in real time  
+- Observe **immediate changes** in weight/bias visualization  
+
+---
+
+## 📸 Screenshots
+
+### Training & Weight Updates
+<p align="center">
+  <img
+    src="https://github.com/Sourasamanta/ScreenShots/blob/main/PerceptronLearning/Perceptron_learning1.jpeg"
+    width="240"
+    alt="Perceptron Training Screen"
+  />
+</p>
+
+### Prediction Output View
+<p align="center">
+  <img
+    src="https://github.com/Sourasamanta/ScreenShots/blob/main/PerceptronLearning/Perceptron_learning2.jpeg"
+    width="240"
+    alt="Perceptron Prediction Screen"
+  />
+</p>
+
+---
+
+## 🖼️ Demo
+
+### Interactive GIF Demonstration
+
+<p align="center">
+  <img
+    src="https://github.com/Sourasamanta/ScreenShots/blob/main/PerceptronLearning/Perceptron_learningDemo.gif"
+    width="240"
+    alt="Perceptron Learning Demo"
+  />
+</p>
+
+<em>
+Shows training, live weight and bias updates, OR predictions, and adjustable learning rate in real time.
+</em>
+
+---
+
+## 💻 Tech Stack
+
+- **Language:** Kotlin  
+- **UI:** Jetpack Compose (Material 3)  
+- **Architecture:** Clean separation of UI and business logic  
+- **Platform:** Android (emulator or device)
+
+---
+
+## ⚙️ Installation
+
+### Requirements
+- Android Studio (latest stable)  
+- Android SDK  
+- Emulator or physical device  
+
+### Build & Run
 ```bash
-javac Perceptron.java Main.java
-```
-
-### ▶️ Run
-
-```bash
-java Main
-```
-
-Ensure your `Main.java` includes example inputs for training and prediction.
-
----
-
-## 🧪 Test Cases
-
-### ✅ Test Case 1: AND Logic
-
-```java
-int[][] inputs = {{0,0}, {0,1}, {1,0}, {1,1}};
-int[] targets = {-1, -1, -1, 1};
-Perceptron p = new Perceptron(2, 0.1);
-for(int i=0;i<inputs.length;i++) p.train(inputs[i], targets[i]);
-```
-
-**Output:** Correct predictions for AND logic after training.
-
-### ✅ Test Case 2: OR Logic
-
-```java
-int[][] inputs = {{0,0}, {0,1}, {1,0}, {1,1}};
-int[] targets = {-1, 1, 1, 1};
-Perceptron p = new Perceptron(2, 0.1);
-for(int i=0;i<inputs.length;i++) p.train(inputs[i], targets[i]);
-```
-
-**Output:** Correct predictions for OR logic after training.
-
-### ⚠️ Limitations
-
-* Only single-layer perceptron (cannot solve non-linearly separable problems like XOR)
-* Input features must be numeric and preprocessed appropriately
-* No batch training — updates are made per sample
-* No advanced optimization or momentum
-
----
-
-## 🧾 Sample Output
-
-```
-Training perceptron for AND logic...
-Predicted output for [0,1]: -1
-Predicted output for [1,1]: 1
-Final weights: [0.1, 0.1]
-Final bias: -0.05
+./gradlew clean assembleDebug
+./gradlew installDebug
 ```
 
 ---
 
-## 👨‍💻 Author
+## ⚠️ Limitations
 
-**Sourajit Samanta**
-Machine Learning & Neural Networks Enthusiast | BTech CSE
+- Only **single-layer perceptron** (cannot solve XOR)  
+- No batch training — updates per sample  
+- Focused on **educational simulation**  
+- Numeric inputs must be preprocessed  
 
 ---
+
+## 🛣️ Roadmap
+
+- Multi-layer perceptron support  
+- Decision boundary visualization  
+- Additional learning parameters (momentum, decay)  
+- Unit and UI tests  
+- Accessibility improvements  
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome.  
+Fork, create a branch, and submit a PR with clear explanation of changes.  
+
+---
+
+## 📝 License
+
+MIT License
