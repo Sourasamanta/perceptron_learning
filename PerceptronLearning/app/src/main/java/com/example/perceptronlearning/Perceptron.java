@@ -3,7 +3,6 @@ package com.example.perceptronlearning;
 import java.util.Arrays;
 
 public class Perceptron {
-
     private double[] weights;
     private double bias;
     public double y;
@@ -14,7 +13,10 @@ public class Perceptron {
         this.weights = new double[inputSize];
         this.bias = Math.random() * 2 - 1;
         this.y = -1;
-        Arrays.fill(weights, 0); // start from 0 or random
+
+        for (int i = 0; i < weights.length; i++) {
+            weights[i] = Math.random() * 2 - 1;
+        }
     }
 
     public int predict(int[] x) {
@@ -23,17 +25,17 @@ public class Perceptron {
             out += weights[i] * x[i];
         }
         y = out;
-        return (out >= 0) ? 1 : -1; // -1/1 convention
+        return (out >= 0) ? 1 : -1;
     }
 
     public void train(int[] x, int target) {
-        int out = predict(x);
-        while (out != target) {
+        int prediction = predict(x);
+
+        if (prediction != target) {
             for (int i = 0; i < x.length; i++) {
-                weights[i] += learningRate * (target - out) * x[i];
+                weights[i] += learningRate * (target - prediction) * x[i];
             }
-            bias += learningRate * (target - out);
-            out = predict(x);
+            bias += learningRate * (target - prediction);
         }
     }
 
