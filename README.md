@@ -1,4 +1,4 @@
-# Perceptron Learning Simulator — Android (Kotlin | Jetpack Compose)
+# Perceptron Learning Simulator — Android (Kotlin | Jetpack Compose) {apk file available}
 
 A **modern Android app** demonstrating a **single-layer Perceptron** for binary classification. Built with **Kotlin** and **Jetpack Compose**, it emphasizes **state-driven UI**, **clean separation of logic**, and **interactive experimentation** with weights, bias, and learning rates.
 
